@@ -81,10 +81,10 @@ module Hyperclient
     end
 
     # Public: Returns the Resource which the Link is pointing to.
-    def _get
+    def _get(params = {})
       @resource = begin
         response = Futuroscope::Future.new do
-          _connection.get(_url)
+          _connection.get(_url, params)
         end
         Resource.new(response.body, @entry_point, response)
       end
